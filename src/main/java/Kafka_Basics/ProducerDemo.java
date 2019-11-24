@@ -30,7 +30,7 @@ public class ProducerDemo {
 
         ProducerRecord<String, String> record = new ProducerRecord<String, String>("first_topic","Hi_New_to_Kafka_time");
 
-        // Send record
+        // Send record - asynchronous
         producer.send(record);
 
         producer.flush();

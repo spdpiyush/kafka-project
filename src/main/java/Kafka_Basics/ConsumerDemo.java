@@ -16,10 +16,10 @@ import java.util.Properties;
  * Created By : Piyush Kumar
  * on 2019-11-27
  */
-public class Consumer {
+public class ConsumerDemo {
 
     public static void main(String[] args) {
-        Logger logger = LoggerFactory.getLogger(Consumer.class);
+        Logger logger = LoggerFactory.getLogger(ConsumerDemo.class);
         String bootstrapServer = "127.0.0.1:9092";
         String groupId = "my-fifth-application";
 

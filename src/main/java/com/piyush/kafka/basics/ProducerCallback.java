@@ -1,4 +1,4 @@
-package Kafka_Basics;
+package com.piyush.kafka.basics;
 
 import org.apache.kafka.clients.producer.*;
 import org.apache.kafka.common.serialization.StringSerializer;

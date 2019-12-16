@@ -1,4 +1,4 @@
-package Kafka_Basics;
+package com.piyush.kafka.basics;
 /**
  * Created By : Piyush Kumar
  */
@@ -15,7 +15,7 @@ public class ProducerDemo {
     public static void main(String[] args){
         String bootstrapServer = "127.0.0.1:9092";
 
-        //Producer Properties
+        // Creating Producer Properties
 
         Properties properties = new Properties();
         properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,bootstrapServer);
@@ -30,10 +30,10 @@ public class ProducerDemo {
 
         ProducerRecord<String, String> record = new ProducerRecord<String, String>("first_topic","Hi_New_to_Kafka_time");
 
-        // Send record - asynchronous
+        // Sending the record - asynchronous way
         producer.send(record);
 
-        producer.flush();
+        producer.flush(); //Waiting for the Data to be Send to the Kafka
         producer.close();
     }
 }

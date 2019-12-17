@@ -25,19 +25,17 @@ public class ProducerCallback {
 
         KafkaProducer<String, String> producer = new KafkaProducer<String, String>(properties);
 
-        ProducerRecord<String,String> record = new ProducerRecord<String, String>("second_topic","HI_KAFKA_CALLBACK_NEW");
+        ProducerRecord<String,String> record = new ProducerRecord<String, String>("first_topic","HI_KAFKA_CALLBACK_NEW");
 
-        producer.send(record, new Callback() {
-            public void onCompletion(RecordMetadata recordMetadata, Exception e) {
-                if (e == null){
-                    logger.info("Record MetaData : \n" +
-                            "Topic : " + recordMetadata.topic() + "\n" +
-                            "Partition : " + recordMetadata.partition() + "\n" +
-                            "Offset : " + recordMetadata.offset() + "\n" +
-                            "TimeStamp : " + recordMetadata.timestamp());
-                }else {
-                    logger.error("Error Occurred While Producing Record {}",e);
-                }
+        producer.send(record, (recordMetadata, e) -> {
+            if (e == null){
+                logger.info("Record MetaData : \n" +
+                        "Topic : " + recordMetadata.topic() + "\n" +
+                        "Partition : " + recordMetadata.partition() + "\n" +
+                        "Offset : " + recordMetadata.offset() + "\n" +
+                        "TimeStamp : " + recordMetadata.timestamp());
+            }else {
+                logger.error("Error Occurred While Producing Record {}",e);
             }
         });
 

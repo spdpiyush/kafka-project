@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Properties;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created By : Piyush Kumar
@@ -13,9 +14,9 @@ import java.util.Properties;
  */
 public class ProducerWithKeys {
     private static final Logger logger = LoggerFactory.getLogger(ProducerWithKeys.class);
-    public static void main(String[] args){
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
         String bootstrapServer = "127.0.0.1:9092";
-        String topic = "second_topic";
+        String topic = "first_topic";
         String key;
         String value;
         Properties properties = new Properties();
@@ -43,7 +44,7 @@ public class ProducerWithKeys {
                         logger.error("Error Occurred While Producing Record {}",e);
                     }
                 }
-            });
+            }).get();
         }
 
         producer.flush();

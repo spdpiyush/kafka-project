@@ -21,7 +21,7 @@ public class ConsumerDemo {
     public static void main(String[] args) {
         Logger logger = LoggerFactory.getLogger(ConsumerDemo.class);
         String bootstrapServer = "127.0.0.1:9092";
-        String groupId = "my-fifth-application";
+        String groupId = "second_application";
 
         //Consumer Config
         Properties properties = new Properties();
@@ -36,7 +36,7 @@ public class ConsumerDemo {
         KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(properties);
 
         //Consumer can Subscribe to 1 or more topics
-        consumer.subscribe(Collections.singleton("second_topic"));
+        consumer.subscribe(Collections.singleton("first_topic"));
 
         //poll for new messages
         while (true){

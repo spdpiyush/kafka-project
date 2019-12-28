@@ -29,11 +29,13 @@ public class IdempotenceProducer {
          *  To Enable this : ACKS should be all,
          *      Retries should be > 1 , by default retires value is INT_MAXVALUE
          *      and enable.idempotence should be true
+         *      and max.in.flight.request.per.connection should be 1
          */
         properties.setProperty(ProducerConfig.ACKS_CONFIG,"all");
         properties.setProperty(ProducerConfig.RETRIES_CONFIG,"100");
         properties.setProperty(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG,"true");
         properties.setProperty(ProducerConfig.RETRY_BACKOFF_MS_CONFIG,"10000");
+        properties.setProperty(ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION,"1");
 
         KafkaProducer<String, String> producer = new KafkaProducer<String, String>(properties);
 

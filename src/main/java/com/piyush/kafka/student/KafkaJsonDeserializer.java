@@ -22,7 +22,7 @@ public class KafkaJsonDeserializer<T> implements Deserializer {
 
     }
 
-    @Override
+    @Override:!
     public Object deserialize(String s, byte[] bytes) {
         ObjectMapper objectMapper = new ObjectMapper();
         T obj = null;

@@ -17,12 +17,17 @@ public class KafkaJsonDeserializer<T> implements Deserializer {
     private Logger logger = LoggerFactory.getLogger(KafkaJsonSerializer.class);
 
     private  Class<T> type;
+
+    public KafkaJsonDeserializer(Class<T> studentEntityClass) {
+        this.type = studentEntityClass;
+    }
+
     @Override
     public void configure(Map configs, boolean isKey) {
 
     }
 
-    @Override:!
+    @Override
     public Object deserialize(String s, byte[] bytes) {
         ObjectMapper objectMapper = new ObjectMapper();
         T obj = null;

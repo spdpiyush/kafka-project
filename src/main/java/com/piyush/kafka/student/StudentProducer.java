@@ -21,16 +21,15 @@ public class StudentProducer {
 
         Properties properties = new Properties();
         properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,bootstrapServer);
-        properties.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,StudentEntity.class.getName());
 
-        KafkaProducer<String, StudentEntity> producer = new KafkaProducer<String, StudentEntity>(properties);
+
+        KafkaProducer<String, StudentEntity> producer = new KafkaProducer<String, StudentEntity>(properties,new StringSerializer(), new KafkaJsonSerializer());
 
         StudentEntity student = new StudentEntity();
         student.setId(1);
-        student.setName("Piyush Kumar");
-        student.setAddress("MV");
-        student.setEmail("piyushchamp.pkp@gmail.com");
+        student.setName("Raj Kumar");
+        student.setAddress("TN");
+        student.setEmail("raj.pkp@gmail.com");
         student.setContact("90009");
 
         ProducerRecord<String, StudentEntity>  record = new ProducerRecord<>("student",student);
